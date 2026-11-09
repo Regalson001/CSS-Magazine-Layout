@@ -1,0 +1,717 @@
+
+/* ==========================================
+   THE CREATIVE JOURNAL
+   CSS MAGAZINE LAYOUT
+   Author: Stephen Oyugi
+   GitHub: Regalson001
+========================================== */
+
+/* 1. CSS CUSTOM PROPERTIES */
+:root {
+  --color-dark: #17231f;
+  --color-text: #38443e;
+  --color-muted: #788078;
+  --color-accent: #c47d4d;
+  --color-background: #f8f7f3;
+  --color-white: #ffffff;
+  --color-border: #e6e3dc;
+
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+
+  --page-width: 1200px;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+}
+
+/* 2. GLOBAL RESET */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.container {
+  width: min(90%, var(--page-width));
+  margin-inline: auto;
+}
+
+/* 3. HEADER */
+.site-header {
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-top {
+  min-height: 105px;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+
+  text-align: center;
+}
+
+.edition,
+.header-link {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.edition {
+  text-align: left;
+  color: var(--color-muted);
+}
+
+.brand,
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--color-dark);
+}
+
+.brand span,
+.footer-brand span {
+  color: var(--color-accent);
+}
+
+.header-link {
+  justify-self: end;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+/* 4. MAIN NAVIGATION */
+.main-navigation {
+  min-height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 3rem);
+
+  border-top: 1px solid var(--color-border);
+}
+
+.main-navigation a {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  transition: color 0.25s ease;
+}
+
+.main-navigation a:hover,
+.main-navigation a:focus-visible {
+  color: var(--color-accent);
+}
+
+/* 5. INTRODUCTION */
+.intro {
+  padding-block: var(--space-2xl);
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: end;
+  gap: var(--space-lg);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--color-accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.intro h1,
+.section-heading h2,
+.newsletter-content h2 {
+  margin: 0.8rem 0;
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+.intro h1 em,
+.section-heading h2 em,
+.newsletter-content h2 em {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.intro p {
+  max-width: 510px;
+  margin-bottom: 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+.intro-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  padding-bottom: 0.5rem;
+}
+
+.intro-side span {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: var(--color-muted);
+}
+
+.intro-side strong {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-dark);
+}
+
+/* 6. FEATURED MAGAZINE GRID */
+.featured-section {
+  padding-block: var(--space-xl);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  gap: var(--space-lg);
+}
+
+/* MAIN COVER STORY */
+.cover-story {
+  min-width: 0;
+}
+
+.cover-image {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+
+.cover-image img {
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+.cover-story:hover .cover-image img {
+  transform: scale(1.04);
+}
+
+.image-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+  padding: 0.6rem 1rem;
+
+  background: var(--color-accent);
+  color: var(--color-white);
+
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.story-content {
+  padding-top: var(--space-md);
+}
+
+.category {
+  color: var(--color-accent);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.story-content h2 {
+  max-width: 680px;
+  margin: 0.7rem 0;
+
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  line-height: 1.2;
+}
+
+.story-content > p {
+  max-width: 650px;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  margin-block: 1.2rem;
+
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.read-more,
+.latest-content a {
+  display: inline-block;
+  margin-top: 0.5rem;
+
+  color: var(--color-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.35rem;
+}
+
+/* 7. SECONDARY STORIES */
+.secondary-stories {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: var(--space-lg);
+}
+
+.secondary-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.secondary-card img {
+  height: 190px;
+}
+
+.secondary-content h3 {
+  margin: 0.5rem 0;
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+
+.secondary-content p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.secondary-content .article-meta {
+  margin-bottom: 0;
+}
+
+/* 8. EDITORIAL QUOTE */
+.quote-section {
+  padding-block: var(--space-2xl);
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.quote-content {
+  max-width: 850px;
+  text-align: center;
+}
+
+.quote-content blockquote {
+  margin: 1.5rem 0;
+
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.quote-content > p {
+  color: #c6b8a7;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* 9. LATEST STORIES */
+.latest-section {
+  padding-block: var(--space-2xl);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-number {
+  padding-bottom: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* CSS GRID AUTO-FIT */
+.latest-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 240px), 1fr)
+  );
+  gap: var(--space-lg);
+}
+
+.latest-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.latest-card img {
+  height: 220px;
+  transition: transform 0.5s ease;
+}
+
+.latest-card:hover img {
+  transform: scale(1.04);
+}
+
+.latest-content {
+  padding-top: var(--space-sm);
+}
+
+.latest-content h3 {
+  margin: 0.6rem 0;
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.latest-content p {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+/* 10. NEWSLETTER */
+.newsletter-section {
+  padding-block: var(--space-xl);
+  background: #eeeae2;
+}
+
+.newsletter-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.newsletter-content h2 {
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+}
+
+.newsletter-content > div > p {
+  max-width: 440px;
+  color: var(--color-muted);
+}
+
+.newsletter-form label {
+  display: block;
+  margin-bottom: 0.8rem;
+
+  color: var(--color-dark);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.form-group {
+  display: flex;
+  min-height: 54px;
+}
+
+.form-group input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.9rem;
+
+  border: 1px solid var(--color-border);
+  outline: none;
+  background: var(--color-white);
+}
+
+.form-group input:focus-visible {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.form-group button {
+  padding-inline: 1.3rem;
+  border: none;
+
+  background: var(--color-dark);
+  color: var(--color-white);
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.form-group button:hover {
+  background: var(--color-accent);
+}
+
+.newsletter-form small {
+  display: block;
+  margin-top: 0.8rem;
+  color: var(--color-muted);
+  font-size: 0.68rem;
+}
+
+/* 11. FOOTER */
+.site-footer {
+  padding-top: var(--space-xl);
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.footer-content > p {
+  color: #b4beb7;
+  font-size: 0.85rem;
+}
+
+.footer-brand {
+  color: var(--color-white);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  margin-top: var(--space-lg);
+  padding-block: var(--space-md);
+
+  border-top: 1px solid #405047;
+
+  color: #b4beb7;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.footer-bottom a {
+  color: var(--color-accent);
+}
+
+/* 12. RESPONSIVE DESIGN */
+
+/* TABLET */
+@media (max-width: 850px) {
+  .featured-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .cover-image {
+    height: 330px;
+  }
+
+  .secondary-card img {
+    height: 150px;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .intro-side {
+    align-items: flex-start;
+  }
+
+  .newsletter-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .container {
+    width: 92%;
+  }
+
+  .header-top {
+    min-height: 85px;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+  }
+
+  .brand {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    font-size: 1.2rem;
+  }
+
+  .edition {
+    display: none;
+  }
+
+  .header-link {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 0.58rem;
+  }
+
+  .main-navigation {
+    justify-content: flex-start;
+    gap: 1.3rem;
+    padding-block: 1rem;
+  }
+
+  .main-navigation a {
+    font-size: 0.62rem;
+  }
+
+  .intro {
+    padding-block: var(--space-xl);
+  }
+
+  .intro h1 {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-image {
+    height: 270px;
+  }
+
+  .secondary-stories {
+    gap: var(--space-md);
+  }
+
+  .secondary-card {
+    grid-template-columns: 115px 1fr;
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .secondary-card img {
+    height: 130px;
+  }
+
+  .secondary-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .secondary-content p {
+    font-size: 0.75rem;
+  }
+
+  .quote-section {
+    padding-block: var(--space-xl);
+  }
+
+  .latest-section {
+    padding-block: var(--space-xl);
+  }
+
+  .latest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-card img {
+    height: 240px;
+  }
+
+  .section-heading {
+    align-items: center;
+  }
+
+  .section-number {
+    font-size: 0.6rem;
+  }
+
+  .form-group {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .form-group input,
+  .form-group button {
+    min-height: 50px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+/* 13. ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
